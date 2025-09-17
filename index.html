@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizz Web Page</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="quiz-container">
+      <div id="quiz-app">
+        <div class="quiz-header">
+          <h1 class="quiz-title" id="quiz-title">Loading Quiz...</h1>
+          <div class="progress-bar">
+            <div
+              class="progress-fill"
+              id="progress-fill"
+              style="width: 0%"
+            ></div>
+          </div>
+        </div>
+        <div id="question-container"></div>
+        <div class="navigation-buttons">
+          <button id="prev-btn" onclick="navigateQuestion(-1)" disabled>
+            Previous
+          </button>
+          <button id="next-btn" onclick="navigateQuestion(1)">Next</button>
+          <button id="submit-btn" onclick="submitQuiz()" style="display: none">
+            Submit Quiz
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
