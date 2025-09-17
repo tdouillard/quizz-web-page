@@ -2,10 +2,12 @@
 
 A modular quiz web application built with Vite that renders interactive quizzes from JSON data with support for multiple question types.
 
+![Quiz Screenshot](docs/screenshot.png)
+
 ## Features
 
 - 📝 **Multiple Question Types**: Multiple Choice, Single Choice, and Text Input
-- 🔧 **Modular Architecture**: Easy to extend with new question types  
+- 🔧 **Modular Architecture**: Easy to extend with new question types
 - 📊 **Progress Tracking**: Real-time progress bar and completion statistics
 - ⏱️ **Timer**: Tracks time taken to complete the quiz
 - 🔄 **Navigation**: Move between questions and review answers
@@ -31,24 +33,24 @@ npm run preview
 
 ```json
 {
-    "name": "My Quiz Title",
-    "Questions": [
-        {
-            "name": "Question text here?",
-            "type": "Multiple Choice",
-            "answer": ["Option 1", "Option 2", "Option 3"]
-        },
-        {
-            "name": "Single selection question?",
-            "type": "Single Choice", 
-            "answer": ["Choice A", "Choice B", "Choice C"]
-        },
-        {
-            "name": "What is your answer?",
-            "type": "Input",
-            "answer": ["Expected answer text"]
-        }
-    ]
+  "name": "My Quiz Title",
+  "Questions": [
+    {
+      "name": "Question text here?",
+      "type": "Multiple Choice",
+      "answer": ["Option 1", "Option 2", "Option 3"]
+    },
+    {
+      "name": "Single selection question?",
+      "type": "Single Choice",
+      "answer": ["Choice A", "Choice B", "Choice C"]
+    },
+    {
+      "name": "What is your answer?",
+      "type": "Input",
+      "answer": ["Expected answer text"]
+    }
+  ]
 }
 ```
 
