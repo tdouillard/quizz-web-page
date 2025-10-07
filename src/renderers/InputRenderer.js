@@ -1,17 +1,18 @@
-import { BaseQuestionRenderer } from './BaseQuestionRenderer.js';
+import { BaseQuestionRenderer } from "./BaseQuestionRenderer.js";
+import { RENDER_TYPES } from "../utils.js";
 
 /**
  * InputRenderer - Handles text input questions
  */
 export class InputRenderer extends BaseQuestionRenderer {
-    getType() {
-        return 'Input';
-    }
+  getType() {
+    return RENDER_TYPES.INPUT;
+  }
 
-    render(question, currentAnswer, questionIndex) {
-        const value = currentAnswer || '';
-        
-        const answersHTML = `
+  render(question, currentAnswer, questionIndex) {
+    const value = currentAnswer || "";
+
+    const answersHTML = `
             <input type="text" 
                    class="text-input" 
                    value="${this.escapeHtml(value)}" 
@@ -20,22 +21,22 @@ export class InputRenderer extends BaseQuestionRenderer {
                    onkeyup="updateInputAnswer(this)">
         `;
 
-        return this.createQuestionHTML(question, questionIndex, answersHTML);
-    }
+    return this.createQuestionHTML(question, questionIndex, answersHTML);
+  }
 
-    getAnswer(container) {
-        const input = container.querySelector('.text-input');
-        return input ? input.value.trim() : '';
-    }
+  getAnswer(container) {
+    const input = container.querySelector(".text-input");
+    return input ? input.value.trim() : "";
+  }
 
-    setAnswer(container, answer) {
-        const input = container.querySelector('.text-input');
-        if (input) {
-            input.value = answer || '';
-        }
+  setAnswer(container, answer) {
+    const input = container.querySelector(".text-input");
+    if (input) {
+      input.value = answer || "";
     }
+  }
 
-    validateAnswer(answer) {
-        return typeof answer === 'string' && answer.trim() !== '';
-    }
+  validateAnswer(answer) {
+    return typeof answer === "string" && answer.trim() !== "";
+  }
 }

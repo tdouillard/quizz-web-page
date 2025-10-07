@@ -31,6 +31,8 @@ npm run preview
 
 ## Quiz JSON Format
 
+cf [sampleData](src/sampleData.js) to see complete examples
+
 ```json
 {
   "name": "My Quiz Title",
@@ -49,7 +51,7 @@ npm run preview
       "name": "What is your answer?",
       "type": "Input",
       "answer": ["Expected answer text"]
-    }
+    },    
   ]
 }
 ```
@@ -59,10 +61,18 @@ npm run preview
 - **Multiple Choice**: Checkboxes allowing multiple selections
 - **Single Choice**: Radio buttons for single selection
 - **Input**: Text input field for free-form answers
+- **Dropdown Choice** : Dropdown(s) field for selection in list
 
 ## Extending with New Question Types
 
 See [EXTENDING.md](EXTENDING.md) for detailed instructions on adding custom question types.
+
+## TODO
+
+- () Add picture renderer
+- () Add audio renderer
+- () Add multiple sections
+- () Show result on question result directly
 
 ## Architecture
 

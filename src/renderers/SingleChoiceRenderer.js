@@ -1,56 +1,59 @@
-import { BaseQuestionRenderer } from './BaseQuestionRenderer.js';
+import { BaseQuestionRenderer } from "./BaseQuestionRenderer.js";
+import { RENDER_TYPES } from "../utils.js";
 
 /**
  * SingleChoiceRenderer - Handles single choice questions (only one answer allowed)
  */
 export class SingleChoiceRenderer extends BaseQuestionRenderer {
-    getType() {
-        return 'Single Choice';
-    }
+  getType() {
+    return RENDER_TYPES.SINGLE_CHOICE;
+  }
 
-    render(question, currentAnswer, questionIndex) {
-        const answersHTML = question.answer.map((option, index) => {
-            const isSelected = currentAnswer === option;
-            return `
-                <div class="answer-option ${isSelected ? 'selected' : ''}" 
+  render(question, currentAnswer, questionIndex) {
+    const answersHTML = question.answer
+      .map((option, index) => {
+        const isSelected = currentAnswer === option;
+        return `
+                <div class="answer-option ${isSelected ? "selected" : ""}" 
                      data-answer="${this.escapeHtml(option)}"
                      onclick="selectSingleChoice(this)">
                     <input type="radio" 
                            name="question_${questionIndex}" 
-                           ${isSelected ? 'checked' : ''} 
+                           ${isSelected ? "checked" : ""} 
                            style="margin-right: 10px;">
                     ${this.escapeHtml(option)}
                 </div>
             `;
-        }).join('');
+      })
+      .join("");
 
-        return this.createQuestionHTML(question, questionIndex, answersHTML);
-    }
+    return this.createQuestionHTML(question, questionIndex, answersHTML);
+  }
 
-    getAnswer(container) {
-        const selectedOption = container.querySelector('.answer-option.selected');
-        return selectedOption ? selectedOption.dataset.answer : null;
-    }
+  getAnswer(container) {
+    const selectedOption = container.querySelector(".answer-option.selected");
+    return selectedOption ? selectedOption.dataset.answer : null;
+  }
 
-    setAnswer(container, answer) {
-        const options = container.querySelectorAll('.answer-option');
-        const radios = container.querySelectorAll('input[type="radio"]');
-        
-        options.forEach((option, index) => {
-            const isSelected = option.dataset.answer === answer;
-            const radio = radios[index];
-            
-            if (isSelected) {
-                option.classList.add('selected');
-                radio.checked = true;
-            } else {
-                option.classList.remove('selected');
-                radio.checked = false;
-            }
-        });
-    }
+  setAnswer(container, answer) {
+    const options = container.querySelectorAll(".answer-option");
+    const radios = container.querySelectorAll('input[type="radio"]');
 
-    validateAnswer(answer) {
-        return typeof answer === 'string' && answer.trim() !== '';
-    }
+    options.forEach((option, index) => {
+      const isSelected = option.dataset.answer === answer;
+      const radio = radios[index];
+
+      if (isSelected) {
+        option.classList.add("selected");
+        radio.checked = true;
+      } else {
+        option.classList.remove("selected");
+        radio.checked = false;
+      }
+    });
+  }
+
+  validateAnswer(answer) {
+    return typeof answer === "string" && answer.trim() !== "";
+  }
 }
